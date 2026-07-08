@@ -1,49 +1,139 @@
-body {
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    font-family: Menlo, Monaco, monospace;
+body{
 
-    background: white;
+    background:#d9d9d9;
 
-    color: black;
+    height:100vh;
 
-    max-width: 900px;
+    display:flex;
 
-    margin: auto;
+    justify-content:center;
 
-    padding: 40px;
+    align-items:center;
 
-    line-height: 1.8;
-
-    font-size: 17px;
+    font-family:Menlo, Monaco, monospace;
 
 }
 
-header{
+.terminal{
 
-    white-space: pre;
+    width:1100px;
 
-    font-weight: bold;
+    height:700px;
 
-}
+    background:#FEF49C;
 
-h2{
+    border-radius:12px;
 
-    margin-top:40px;
+    overflow:hidden;
 
-    text-transform:uppercase;
-
-}
-
-a{
-
-    color:black;
+    box-shadow:0 20px 60px rgba(0,0,0,.30);
 
 }
 
-hr{
+.titlebar{
 
-    border:none;
+    height:38px;
 
-    border-top:1px solid black;
+    background:#e6e6e6;
+
+    display:flex;
+
+    align-items:center;
+
+    position:relative;
+
+}
+
+.traffic-lights{
+
+    display:flex;
+
+    gap:8px;
+
+    margin-left:15px;
+
+}
+
+.red,
+.yellow,
+.green{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.red{
+
+    background:#ff5f57;
+
+}
+
+.yellow{
+
+    background:#febc2e;
+
+}
+
+.green{
+
+    background:#28c840;
+
+}
+
+.title{
+
+    position:absolute;
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.terminal-body{
+
+    padding:25px;
+
+    color:#000;
+
+    font-size:20px;
+
+    line-height:1.6;
+
+}
+
+pre{
+
+    white-space:pre-wrap;
+
+}
+
+.cursor{
+
+    animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+50%{
+
+opacity:0;
+
+}
 
 }
