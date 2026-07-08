@@ -1,0 +1,49 @@
+body {
+
+    font-family: Menlo, Monaco, monospace;
+
+    background: white;
+
+    color: black;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 40px;
+
+    line-height: 1.8;
+
+    font-size: 17px;
+
+}
+
+header{
+
+    white-space: pre;
+
+    font-weight: bold;
+
+}
+
+h2{
+
+    margin-top:40px;
+
+    text-transform:uppercase;
+
+}
+
+a{
+
+    color:black;
+
+}
+
+hr{
+
+    border:none;
+
+    border-top:1px solid black;
+
+}
