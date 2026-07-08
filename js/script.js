@@ -1,4 +1,4 @@
-const command = "man maggie";
+const command = "kurtisjsmith";
 
 let i = 0;
 
