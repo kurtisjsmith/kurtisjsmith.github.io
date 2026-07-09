@@ -10,7 +10,6 @@ function showPrompt() {
         cursor.remove();
     });
 
-
     const prompt = document.createElement("div");
 
     prompt.innerHTML =

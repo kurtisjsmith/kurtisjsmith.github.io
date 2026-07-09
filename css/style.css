@@ -4,6 +4,7 @@
     box-sizing:border-box;
 }
 
+
 body{
 
     background:#d9d9d9;
@@ -18,13 +19,20 @@ body{
 
     font-family:Menlo, Monaco, monospace;
 
+    overflow:hidden;
+
 }
+
 
 .terminal{
 
-    width:1100px;
+    width:90vw;
 
-    height:700px;
+    max-width:1100px;
+
+    height:80vh;
+
+    max-height:700px;
 
     background:#FEF49C;
 
@@ -35,6 +43,7 @@ body{
     box-shadow:0 20px 60px rgba(0,0,0,.30);
 
 }
+
 
 .titlebar{
 
@@ -50,6 +59,7 @@ body{
 
 }
 
+
 .traffic-lights{
 
     display:flex;
@@ -59,6 +69,7 @@ body{
     margin-left:15px;
 
 }
+
 
 .red,
 .yellow,
@@ -72,11 +83,13 @@ body{
 
 }
 
+
 .red{
 
     background:#ff5f57;
 
 }
+
 
 .yellow{
 
@@ -84,11 +97,13 @@ body{
 
 }
 
+
 .green{
 
     background:#28c840;
 
 }
+
 
 .title{
 
@@ -104,7 +119,12 @@ body{
 
 }
 
+
 .terminal-body{
+
+    height:calc(100% - 38px);
+
+    width:100%;
 
     padding:25px;
 
@@ -114,7 +134,27 @@ body{
 
     line-height:1.6;
 
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    white-space:pre-wrap;
+
 }
+
+
+#output{
+
+    margin:0;
+
+    padding:0;
+
+    white-space:pre-wrap;
+
+    overflow-wrap:break-word;
+
+}
+
 
 pre{
 
@@ -122,18 +162,46 @@ pre{
 
 }
 
+
 .cursor{
 
     animation:blink 1s infinite;
 
 }
 
+
 @keyframes blink{
 
-50%{
+    50%{
 
-opacity:0;
+        opacity:0;
+
+    }
 
 }
+
+
+@media (max-width:600px){
+
+    .terminal{
+
+        width:95vw;
+
+        height:85vh;
+
+        border-radius:8px;
+
+    }
+
+
+    .terminal-body{
+
+        padding:15px;
+
+        font-size:14px;
+
+        overflow-wrap:break-word;
+
+    }
 
 }
