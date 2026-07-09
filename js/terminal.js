@@ -1,5 +1,6 @@
 const output = document.getElementById("output");
 
+
 function printLine(text = "") {
 
     const line = document.createElement("div");
@@ -8,40 +9,57 @@ function printLine(text = "") {
 
     output.appendChild(line);
 
-    // Scroll the terminal body, not the <pre>
+    // Keep the latest output visible
     output.parentElement.scrollTop = output.parentElement.scrollHeight;
 
 }
 
 
-function printPage(lines) {
+// Print multiple lines with animation
+function printLines(lines, callback) {
 
-    let line = 0;
+    console.log("printLines called");
 
-    function print() {
+    let index = 0;
 
-        if (line < lines.length) {
+    function next() {
 
-            printLine(lines[line]);
+        if (index >= lines.length) {
 
-            line++;
+            if (callback) {
+                callback();
+            }
 
-            setTimeout(print, 120);
-
-        } else {
-
-            setTimeout(() => {
-
-                printLine("");
-
-                showPrompt();
-
-            }, 500);
+            return;
 
         }
 
+        printLine(lines[index]);
+
+        index++;
+
+        setTimeout(next, 120);
+
     }
 
-    print();
+    next();
+
+}
+
+
+// Startup page
+function printPage(lines) {
+
+    printLines(lines, function () {
+
+        setTimeout(function () {
+
+            printLine("");
+
+            showPrompt();
+
+        }, 500);
+
+    });
 
 }
