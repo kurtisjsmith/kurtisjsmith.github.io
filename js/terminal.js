@@ -1,6 +1,16 @@
 const output = document.getElementById("output");
-
 const cursor = document.querySelector(".cursor");
+
+function printLine(text = "") {
+    const line = document.createElement("div");
+
+    line.textContent = text;
+
+    output.appendChild(line);
+
+    output.scrollTop = output.scrollHeight;
+
+}
 
 function printPage(lines) {
 
@@ -12,11 +22,23 @@ function printPage(lines) {
 
         if (line < lines.length) {
 
-            output.innerHTML += "\n" + lines[line];
+            printLine(lines[line]);
 
             line++;
 
             setTimeout(print, 120);
+
+        } else {
+
+            console.log("printPage finished");
+
+            setTimeout(() => {
+
+                printLine("");
+                
+                showPrompt();
+
+            }, 500);
 
         }
 
