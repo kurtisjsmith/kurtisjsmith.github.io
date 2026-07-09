@@ -1,4 +1,6 @@
 let currentInput = "";
+let inputElement = null;
+
 
 function showPrompt() {
 
@@ -8,6 +10,7 @@ function showPrompt() {
         cursor.remove();
     });
 
+
     const prompt = document.createElement("div");
 
     prompt.innerHTML =
@@ -15,43 +18,61 @@ function showPrompt() {
 
     output.appendChild(prompt);
 
-    const input = prompt.querySelector("#input");
 
-    document.addEventListener("keydown", function (event) {
+    inputElement = prompt.querySelector("#input");
 
-        if (event.key.length === 1) {
 
-            currentInput += event.key;
-
-            input.textContent = currentInput;
-
-        }
-
-        else if (event.key === "Backspace") {
-
-            currentInput = currentInput.slice(0, -1);
-
-            input.textContent = currentInput;
-
-        }
-
-        else if (event.key === "Enter") {
-
-            const command = currentInput;
-
-            input.textContent = command;
-
-            runCommand(command);
-
-            currentInput = "";
-
-            showPrompt();
-
-        }
-
-    });
+    inputElement.textContent = currentInput;
 
 }
+
+
+// Single keyboard listener
+document.addEventListener("keydown", function (event) {
+
+
+    if (!inputElement) {
+        return;
+    }
+
+
+    if (event.key.length === 1) {
+
+        currentInput += event.key;
+
+        inputElement.textContent = currentInput;
+
+    }
+
+
+    else if (event.key === "Backspace") {
+
+        currentInput = currentInput.slice(0, -1);
+
+        inputElement.textContent = currentInput;
+
+    }
+
+
+    else if (event.key === "Enter") {
+
+        const command = currentInput;
+
+
+        inputElement.textContent = command;
+
+
+        runCommand(command);
+
+
+        currentInput = "";
+
+
+        showPrompt();
+
+    }
+
+});
 
 
 typeCommand(function () {
