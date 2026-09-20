@@ -70,8 +70,6 @@ const resetButton = document.getElementById('terminal-reset');
 const minimizeButton = document.getElementById('terminal-minimize');
 const expandButton = document.getElementById('terminal-expand');
 
-console.log("Attaching button listeners");
-
 
 // RED — reset / logout
 resetButton.addEventListener('click', async () => {
@@ -108,5 +106,41 @@ expandButton.addEventListener('click', () => {
 
 });
 
+window.enterContentMode = function () {
 
-console.log("Terminal JavaScript loaded");
+    document.body.classList.add('content-mode');
+
+    terminal.classList.add('collapsed');
+
+};
+
+
+const contentWindow = document.getElementById('main-content');
+
+const contentClose = document.getElementById('content-close');
+const contentMinimize = document.getElementById('content-minimize');
+const contentExpand = document.getElementById('content-expand');
+
+
+// CONTENT RED — close content
+contentClose.addEventListener('click', () => {
+
+    contentWindow.style.display = 'none';
+
+});
+
+
+// CONTENT YELLOW — minimize content
+contentMinimize.addEventListener('click', () => {
+
+    contentWindow.classList.toggle('content-minimized');
+
+});
+
+
+// CONTENT GREEN — restore content
+contentExpand.addEventListener('click', () => {
+
+    contentWindow.classList.remove('content-minimized');
+
+});

@@ -82,8 +82,15 @@ function showHelp(callback) {
 
 function showAbout(callback) {
 
+    enterContentMode();
+
+    document.getElementById('content-body').innerHTML = `
+        <h1>About</h1>
+        <p>About page coming soon...</p>
+    `;
+
     printLines([
-        "About page coming soon..."
+        "Loading About..."
     ], callback);
 
 }

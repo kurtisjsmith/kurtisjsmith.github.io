@@ -46,18 +46,56 @@ body {
 
 .main-content {
     width: 90vw;
-
     max-width: 1100px;
-
     margin: 100px auto 40px;
-
-    padding: 40px;
-
-    background: #ffffff;
-
+    background: #FEF49C;
     border-radius: 12px;
-
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .30);
     min-height: calc(100vh - 140px);
+    display: none;
+}
+
+.content-titlebar {
+    height: 38px;
+    background: #e6e6e6;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.content-traffic-lights {
+    display: flex;
+    gap: 8px;
+    margin-left: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.content-traffic-lights button {
+    position: relative;
+    z-index: 11;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.content-title {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.content-body {
+    min-height: calc(100vh - 178px);
+    padding: 40px;
+    color: #000;
+    font-family: Menlo, Monaco, monospace;
+    font-size: 18px;
+    line-height: 1.6;
+    overflow-y: auto;
 }
 
 
@@ -276,4 +314,32 @@ pre{
 .traffic-lights button {
     position: relative;
     z-index: 11;
+}
+
+body.content-mode {
+    overflow-y: auto;
+}
+
+body.content-mode .terminal {
+    position: fixed;
+    top: 20px;
+    z-index: 1000;
+}
+
+body.content-mode .terminal.collapsed .terminal-body {
+    display: none;
+}
+
+body.content-mode .main-content {
+    display: block;
+    margin-top: 80px;
+}
+
+.main-content.content-minimized {
+    height: 38px;
+    min-height: 38px;
+}
+
+.main-content.content-minimized .content-body {
+    display: none;
 }
