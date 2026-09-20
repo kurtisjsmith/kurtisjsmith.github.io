@@ -63,3 +63,22 @@ function printPage(lines) {
     });
 
 }
+
+const terminal = document.querySelector('.terminal');
+const terminalToggle = document.getElementById('terminal-toggle');
+
+terminalToggle.addEventListener('click', () => {
+
+    terminal.classList.toggle('collapsed');
+
+    if (terminal.classList.contains('collapsed')) {
+
+        terminalToggle.textContent = '+';
+
+    } else {
+
+        terminalToggle.textContent = '−';
+
+    }
+
+});
