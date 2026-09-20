@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeQuest — Dashboard</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>LifeQuest</h1>
+        <button id="logout-button">Logout</button>
+    </header>
+
+    <main>
+        <h2>Welcome to LifeQuest</h2>
+
+        <p id="user-email"></p>
+
+        <section>
+            <h3>Your Journey</h3>
+
+            <ul>
+                <li>AI Assistant — Coming Soon</li>
+                <li>Profile — Coming Soon</li>
+                <li>Projects — Coming Soon</li>
+                <li>Skills — Coming Soon</li>
+            </ul>
+        </section>
+
+        <p id="message"></p>
+    </main>
+
+    <script type="module">
+
+        import { supabase } from './js/supabase.js';
+
+        const userEmail = document.getElementById('user-email');
+        const message = document.getElementById('message');
+        const logoutButton = document.getElementById('logout-button');
+
+        // Check whether a user is logged in
+        const { data: { user } } = await supabase.auth.getUser();
+
+        if (!user) {
+
+            // No authenticated user
+            window.location.href = 'login.html';
+
+        } else {
+
+            // Display the logged-in user's email
+            userEmail.textContent = `Logged in as: ${user.email}`;
+
+        }
+
+        // Handle logout
+        logoutButton.addEventListener('click', async () => {
+
+            const { error } = await supabase.auth.signOut();
+
+            if (error) {
+
+                message.textContent = error.message;
+                return;
+
+            }
+
+            window.location.href = 'login.html';
+
+        });
+
+    </script>
+
+</body>
+</html>
