@@ -2,68 +2,134 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>kurtisjsmith</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <div class="terminal">
 
-        <div class="titlebar">
+    <!-- =====================================================
+         MAIN WINDOW
+         ===================================================== -->
+
+    <main class="terminal-window">
+
+
+        <!-- =================================================
+             WINDOW TITLE BAR
+             ================================================= -->
+
+        <header class="titlebar">
 
             <div class="traffic-lights">
-                <button class="red" id="terminal-reset" aria-label="Reset terminal"></button>
-                <button class="yellow" id="terminal-minimize" aria-label="Minimize terminal"></button>
-                <button class="green" id="terminal-expand" aria-label="Expand terminal"></button>
+
+                <button
+                    class="red"
+                    id="terminal-reset"
+                    aria-label="Reset terminal"
+                ></button>
+
+                <button
+                    class="yellow"
+                    id="terminal-minimize"
+                    aria-label="Minimize window"
+                ></button>
+
+                <button
+                    class="green"
+                    id="terminal-expand"
+                    aria-label="Expand window"
+                ></button>
+
             </div>
+
 
             <div class="title">
                 kurtisjsmith@portfolio
             </div>
 
+        </header>
+
+
+        <!-- =================================================
+             FLOATING COMMAND PROMPT
+             ================================================= -->
+
+        <div class="command-prompt">
+
+            <span class="prompt-path">
+                kurtisjsmith@portfolio ~ %
+            </span>
+
+            <span id="input"></span>
+
+            <span class="cursor">█</span>
+
         </div>
 
-        <div class="terminal-body">
 
-            <div id="output"></div>
+        <!-- =================================================
+             MAIN CONTENT
+             ================================================= -->
 
-        </div>
+        <section
+            class="content-body"
+            id="content-body"
+        >
 
-    </div>
+            <div class="man-page">
 
-    <div class="main-content" id="main-content">
+                <pre>
+KURTISJSMITH(1)          User Commands          KURTISJSMITH(1)
 
-        <div class="content-titlebar">
+NAME
+    Kurtis Jackson Smith — Data Analyst
 
-            <div class="content-traffic-lights">
-                <button class="red" id="content-close" aria-label="Close content"></button>
-                <button class="yellow" id="content-minimize" aria-label="Minimize content"></button>
-                <button class="green" id="content-expand" aria-label="Expand content"></button>
+SYNOPSIS
+    Python • SQL • Power BI • Tableau
+
+DESCRIPTION
+    Aspiring Data Analyst building strong
+    foundations in analytics, machine
+    learning, and business intelligence.
+
+AUTHOR
+    Kurtis Jackson Smith
+                </pre>
+
             </div>
 
-            <div class="content-title">
-                kurtisjsmith@portfolio
-            </div>
+        </section>
 
-        </div>
 
-        <div class="content-body" id="content-body">
+    </main>
 
-            <!-- Portfolio content will be loaded here -->
 
-        </div>
-
-    </div>
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
 
     <script src="js/pages.js"></script>
     <script src="js/terminal.js"></script>
     <script src="js/commands.js"></script>
     <script src="js/typing.js"></script>
     <script src="js/app.js"></script>
+
 
 </body>
 

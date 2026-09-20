@@ -1,9 +1,17 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+
+/* =========================================================
+   PAGE
+   ========================================================= */
 
 body {
     background: #d9d9d9;
@@ -12,268 +20,98 @@ body {
 
     font-family: Menlo, Monaco, monospace;
 
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
-.terminal {
-    width: 90vw;
+/* =========================================================
+   MAIN TERMINAL WINDOW
+   ========================================================= */
 
+.terminal-window {
+    width: 90vw;
     max-width: 1100px;
 
     height: 80vh;
-
     max-height: 700px;
 
+    margin: 70px auto 40px;
+
     background: #FEF49C;
 
     border-radius: 12px;
 
     overflow: hidden;
 
-    box-shadow: 0 20px 60px rgba(0,0,0,.30);
-
-    position: fixed;
-
-    top: 40px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    z-index: 1000;
-}
-
-.main-content {
-    width: 90vw;
-    max-width: 1100px;
-    margin: 100px auto 40px;
-    background: #FEF49C;
-    border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, .30);
-    min-height: calc(100vh - 140px);
-    display: none;
+
+    position: relative;
 }
 
-.content-titlebar {
+
+/* =========================================================
+   TITLE BAR
+   ========================================================= */
+
+.titlebar {
     height: 38px;
+
     background: #e6e6e6;
+
     display: flex;
     align-items: center;
+
     position: relative;
 }
 
-.content-traffic-lights {
-    display: flex;
-    gap: 8px;
-    margin-left: 15px;
-    position: relative;
-    z-index: 10;
-}
 
-.content-traffic-lights button {
-    position: relative;
-    z-index: 11;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
+/* =========================================================
+   WINDOW TITLE
+   ========================================================= */
 
-.content-title {
+.title {
     position: absolute;
+
     width: 100%;
+
     text-align: center;
+
     font-size: 14px;
     font-weight: 600;
 }
 
-.content-body {
-    min-height: calc(100vh - 178px);
-    padding: 40px;
-    color: #000;
-    font-family: Menlo, Monaco, monospace;
-    font-size: 18px;
-    line-height: 1.6;
-    overflow-y: auto;
+
+/* =========================================================
+   TRAFFIC LIGHTS
+   ========================================================= */
+
+.traffic-lights {
+    display: flex;
+
+    gap: 8px;
+
+    margin-left: 15px;
+
+    position: relative;
+
+    z-index: 10;
 }
-
-
-.titlebar{
-
-    height:38px;
-
-    background:#e6e6e6;
-
-    display:flex;
-
-    align-items:center;
-
-    position:relative;
-
-}
-
-
-.traffic-lights{
-
-    display:flex;
-
-    gap:8px;
-
-    margin-left:15px;
-
-}
-
-
-.red,
-.yellow,
-.green{
-
-    width:12px;
-
-    height:12px;
-
-    border-radius:50%;
-
-}
-
-
-.red{
-
-    background:#ff5f57;
-
-}
-
-
-.yellow{
-
-    background:#febc2e;
-
-}
-
-
-.green{
-
-    background:#28c840;
-
-}
-
-
-.title{
-
-    position:absolute;
-
-    width:100%;
-
-    text-align:center;
-
-    font-size:14px;
-
-    font-weight:600;
-
-}
-
-
-.terminal-body{
-
-    height:calc(100% - 38px);
-
-    width:100%;
-
-    padding:25px;
-
-    color:#000;
-
-    font-size:20px;
-
-    line-height:1.6;
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-    white-space:pre-wrap;
-
-}
-
-
-#output{
-
-    margin:0;
-
-    padding:0;
-
-    white-space:pre-wrap;
-
-    overflow-wrap:break-word;
-
-}
-
-
-pre{
-
-    white-space:pre-wrap;
-
-}
-
-
-.cursor{
-
-    animation:blink 1s infinite;
-
-}
-
-
-@keyframes blink{
-
-    50%{
-
-        opacity:0;
-
-    }
-
-}
-
-
-@media (max-width:600px){
-
-    .terminal{
-
-        width:95vw;
-
-        height:85vh;
-
-        border-radius:8px;
-
-    }
-
-
-    .terminal-body{
-
-        padding:15px;
-
-        font-size:14px;
-
-        overflow-wrap:break-word;
-
-    }
-
-}
-
-/* Traffic light buttons */
 
 .traffic-lights button {
-    border: none;
-    padding: 0;
-    cursor: pointer;
-}
-
-.red,
-.yellow,
-.green {
     width: 12px;
     height: 12px;
+
+    border: none;
+
+    padding: 0;
+
     border-radius: 50%;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 11;
 }
 
 .red {
@@ -293,53 +131,185 @@ pre{
 }
 
 
-/* Minimized terminal */
+/* =========================================================
+   FLOATING COMMAND PROMPT
+   ========================================================= */
 
-.terminal.collapsed {
-    height: 38px;
+.command-prompt {
+    position: absolute;
+
+    top: 58px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(75%, 750px);
+
+    min-height: 42px;
+
+    padding: 8px 18px;
+
+    background: #FEF49C;
+
+    border: 1px solid rgba(0, 0, 0, .25);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, .18);
+
+    color: #000;
+
+    font-family: Menlo, Monaco, monospace;
+
+    font-size: 16px;
+
+    line-height: 24px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    z-index: 20;
 }
 
-.terminal.collapsed .terminal-body {
-    display: none;
+
+/* =========================================================
+   COMMAND PROMPT INPUT
+   ========================================================= */
+
+#input {
+    white-space: pre;
+}
+
+.prompt-path {
+    white-space: nowrap;
 }
 
 
-/* Expanded terminal */
+/* =========================================================
+   CURSOR
+   ========================================================= */
 
-.traffic-lights {
-    position: relative;
-    z-index: 10;
+.cursor {
+    animation: blink 1s infinite;
 }
 
-.traffic-lights button {
-    position: relative;
-    z-index: 11;
+@keyframes blink {
+
+    50% {
+        opacity: 0;
+    }
+
 }
 
-body.content-mode {
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.content-body {
+    height: calc(100% - 38px);
+
+    padding: 125px 50px 50px;
+
+    color: #000;
+
+    font-family: Menlo, Monaco, monospace;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
     overflow-y: auto;
+
+    overflow-x: hidden;
 }
 
-body.content-mode .terminal {
-    position: fixed;
-    top: 20px;
-    z-index: 1000;
+
+/* =========================================================
+   MAN PAGE
+   ========================================================= */
+
+.man-page {
+    width: 100%;
+
+    white-space: pre-wrap;
 }
 
-body.content-mode .terminal.collapsed .terminal-body {
-    display: none;
+.man-page pre {
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Menlo, Monaco, monospace;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    white-space: pre-wrap;
 }
 
-body.content-mode .main-content {
-    display: block;
-    margin-top: 80px;
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.content-body::-webkit-scrollbar {
+    width: 10px;
 }
 
-.main-content.content-minimized {
-    height: 38px;
-    min-height: 38px;
+.content-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, .05);
 }
 
-.main-content.content-minimized .content-body {
-    display: none;
+.content-body::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .25);
+
+    border-radius: 10px;
+}
+
+.content-body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, .4);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .terminal-window {
+        width: 95vw;
+
+        height: 85vh;
+
+        margin-top: 50px;
+
+        border-radius: 8px;
+    }
+
+    .command-prompt {
+        width: 88%;
+
+        top: 55px;
+
+        padding: 7px 14px;
+
+        font-size: 14px;
+    }
+
+    .content-body {
+        padding: 115px 20px 30px;
+
+        font-size: 16px;
+    }
+
+    .man-page pre {
+        font-size: 16px;
+    }
+
 }

@@ -67,8 +67,6 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-typeCommand(function () {
+terminal.classList.add('command-bar');
 
-    printPage(pages.home);
-
-});
+showPrompt();
