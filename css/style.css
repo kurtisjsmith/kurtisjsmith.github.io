@@ -222,35 +222,40 @@ pre{
 
 }
 
-.terminal-toggle {
-    position: absolute;
+/* Traffic light buttons */
 
-    right: 12px;
-
-    top: 7px;
-
-    width: 24px;
-
-    height: 24px;
-
+.traffic-lights button {
     border: none;
-
-    background: transparent;
-
-    font-family: Menlo, Monaco, monospace;
-
-    font-size: 18px;
-
+    padding: 0;
     cursor: pointer;
-
-    color: #000;
 }
 
-.terminal-toggle:hover {
-    background: rgba(0, 0, 0, 0.1);
-
-    border-radius: 4px;
+.red,
+.yellow,
+.green {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
 }
+
+.red {
+    background: #ff5f57;
+}
+
+.yellow {
+    background: #febc2e;
+}
+
+.green {
+    background: #28c840;
+}
+
+.traffic-lights button:hover {
+    filter: brightness(0.85);
+}
+
+
+/* Minimized terminal */
 
 .terminal.collapsed {
     height: 38px;
@@ -258,4 +263,17 @@ pre{
 
 .terminal.collapsed .terminal-body {
     display: none;
+}
+
+
+/* Expanded terminal */
+
+.traffic-lights {
+    position: relative;
+    z-index: 10;
+}
+
+.traffic-lights button {
+    position: relative;
+    z-index: 11;
 }

@@ -65,20 +65,48 @@ function printPage(lines) {
 }
 
 const terminal = document.querySelector('.terminal');
-const terminalToggle = document.getElementById('terminal-toggle');
 
-terminalToggle.addEventListener('click', () => {
+const resetButton = document.getElementById('terminal-reset');
+const minimizeButton = document.getElementById('terminal-minimize');
+const expandButton = document.getElementById('terminal-expand');
 
-    terminal.classList.toggle('collapsed');
+console.log("Attaching button listeners");
 
-    if (terminal.classList.contains('collapsed')) {
 
-        terminalToggle.textContent = '+';
+// RED — reset / logout
+resetButton.addEventListener('click', async () => {
 
-    } else {
+    try {
 
-        terminalToggle.textContent = '−';
+        const { supabase } = await import('../lifequest/js/supabase.js');
+
+        await supabase.auth.signOut();
+
+    } catch (error) {
+
+        console.error('Logout error:', error);
 
     }
 
+    window.location.reload();
+
 });
+
+
+// YELLOW — completely collapse
+minimizeButton.addEventListener('click', () => {
+
+    terminal.classList.add('collapsed');
+
+});
+
+
+// GREEN — restore
+expandButton.addEventListener('click', () => {
+
+    terminal.classList.remove('collapsed');
+
+});
+
+
+console.log("Terminal JavaScript loaded");
