@@ -26,16 +26,13 @@ body {
 
 /* =========================================================
    MAIN TERMINAL WINDOW
-   ========================================================= */
+========================================================= */
 
 .terminal-window {
-    width: 90vw;
-    max-width: 1100px;
+    width: calc(100vw - 40px);
+    height: calc(100vh - 40px);
 
-    height: 80vh;
-    max-height: 700px;
-
-    margin: 70px auto 40px;
+    margin: 20px;
 
     background: #FEF49C;
 
@@ -46,6 +43,7 @@ body {
     box-shadow: 0 20px 60px rgba(0, 0, 0, .30);
 
     position: relative;
+    box-sizing: border-box;
 }
 
 
@@ -138,7 +136,7 @@ body {
 .command-prompt {
     position: absolute;
 
-    top: 58px;
+    top: 125px;
 
     left: 50%;
 
@@ -312,4 +310,94 @@ body {
         font-size: 16px;
     }
 
+}
+
+/* =========================================================
+   EXPANDED WINDOW STATE
+   ========================================================= */
+
+.terminal-window.expanded {
+    /* Keep the terminal window at the top */
+    margin-top: 20px;
+}
+
+
+/* Keep command prompt visible */
+
+.terminal-window.expanded .command-prompt {
+    display: block;
+}
+
+
+/* Hide the original content */
+
+.terminal-window.expanded .content-body {
+    display: none;
+}
+
+/* =========================================================
+   REDUCED TERMINAL WINDOW
+   ========================================================= */
+
+.terminal-window.reduced {
+    width: 90vw;
+    max-width: 1100px;
+
+    height: 110px;
+    max-height: 110px;
+
+    margin: 20px auto 20px;
+
+    border-radius: 12px;
+
+    overflow: visible;
+}
+
+
+/* Keep the title bar visible */
+
+.terminal-window.reduced .titlebar {
+    height: 38px;
+}
+
+
+/* Keep the command prompt visible */
+
+.terminal-window.reduced .command-prompt {
+    display: block;
+
+    top: 50px;
+
+    width: 75%;
+
+    min-height: 42px;
+}
+
+
+/* =========================================================
+   SECOND WINDOW
+   ========================================================= */
+
+.terminal-window.reduced .content-body {
+    display: block;
+
+    position: absolute;
+
+    top: 130px;
+    left: 0;
+
+    width: 100%;
+
+    height: calc(100vh - 170px);
+
+    padding: 50px;
+
+    background: #FEF49C;
+
+    border-radius: 12px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .30);
+
+    overflow-y: auto;
+    overflow-x: hidden;
 }

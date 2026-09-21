@@ -1,11 +1,12 @@
 let currentInput = "";
 let inputElement = null;
 
-
 function showPrompt() {
 
     // Remove any previous blinking cursor
-    document.querySelectorAll(".cursor").forEach(cursor => cursor.remove());
+    document
+        .querySelectorAll(".cursor")
+        .forEach(cursor => cursor.remove());
 
     const prompt = document.createElement("div");
 
@@ -19,16 +20,21 @@ function showPrompt() {
     inputElement.textContent = currentInput;
 
     // Keep the prompt visible
-    output.parentElement.scrollTop = output.parentElement.scrollHeight;
-
+    output.parentElement.scrollTop =
+        output.parentElement.scrollHeight;
 }
 
 
-// Single keyboard listener
+// =========================================================
+// KEYBOARD INPUT
+// =========================================================
+
 document.addEventListener("keydown", function (event) {
 
     if (!inputElement) return;
 
+
+    // Regular characters
     if (event.key.length === 1) {
 
         currentInput += event.key;
@@ -37,6 +43,8 @@ document.addEventListener("keydown", function (event) {
 
     }
 
+
+    // Backspace
     else if (event.key === "Backspace") {
 
         currentInput = currentInput.slice(0, -1);
@@ -45,6 +53,8 @@ document.addEventListener("keydown", function (event) {
 
     }
 
+
+    // Enter / Run command
     else if (event.key === "Enter") {
 
         const command = currentInput.trim();
@@ -67,6 +77,10 @@ document.addEventListener("keydown", function (event) {
 });
 
 
-terminal.classList.add('command-bar');
+// =========================================================
+// TERMINAL INITIALIZATION
+// =========================================================
+
+terminal.classList.add("command-bar");
 
 showPrompt();
